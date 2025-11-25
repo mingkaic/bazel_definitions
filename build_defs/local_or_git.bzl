@@ -213,11 +213,8 @@ def _git_repository_impl(rctx):
         rctx.delete(rctx.path(".tmp_git_root/.git"))
     else:
         rctx.delete(rctx.path(".git"))
-    if rctx.attr.commit:
 
-        return rctx.repo_metadata(reproducible = True)
-    return rctx.repo_metadata(
-        attrs_for_reproducibility = _update_git_attrs(rctx.attr, _attrs.keys(), update))
+    return _update_git_attrs(rctx.attr, _attrs.keys(), update)
 
 def _local_or_git_repository_impl(rctx):
     path = rctx.attr.path
