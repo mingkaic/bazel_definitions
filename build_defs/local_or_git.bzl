@@ -219,7 +219,7 @@ def _git_repository_impl(rctx):
 def _local_or_git_repository_impl(rctx):
     path = rctx.attr.path
     if rctx.attr.path_prefix_env:
-        path_prefix = rctx.os.environ.get(rctx.attr.path_prefix_env)
+        path_prefix = rctx.os.environ.get(rctx.attr.path_prefix_env, "")
         if not path_prefix.endswith("/"):
             path_prefix += "/"
         path = path_prefix + path
